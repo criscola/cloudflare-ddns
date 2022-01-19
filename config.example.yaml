@@ -1,0 +1,9 @@
+api_token: "your api token with Edit DNS enabled"
+refresh_interval: 60
+zones:
+  - zone_id: "your zone id"
+    proxied: true
+    ipv6: false
+  - zone_id: "your zone id"
+    proxied: true
+    ipv6: false
