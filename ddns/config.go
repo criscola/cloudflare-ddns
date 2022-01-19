@@ -1,13 +1,13 @@
 package ddns
 
 type Zone struct {
-	ZoneId  string `yaml:"zone_id"`
-	Proxied bool   `yaml:"proxied"`
-	Ipv6    bool   `yaml:"ipv6"`
+	ZoneId  string `mapstructure:"zone_id"`
+	Proxied bool   `mapstructure:"proxied"`
+	Ipv6    bool   `mapstructure:"ipv6"`
 }
 
 type Config struct {
-	ApiToken        string `yaml:"api_token"`
-	RefreshInterval int    `yaml:"refresh_interval"`
-	Zones           []Zone `yaml:"zones"`
+	ApiToken        string `mapstructure:"api_token"`
+	RefreshInterval int    `mapstructure:"refresh_interval"`
+	Zones           []Zone `mapstructure:"zones"`
 }

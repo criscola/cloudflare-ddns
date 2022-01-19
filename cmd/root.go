@@ -51,6 +51,7 @@ to quickly create a Cobra application.`,
 			fmt.Println("Error during config unmarshalling.")
 		}
 		fmt.Println("Yay")
+		fmt.Println(config)
 	},
 }
 
