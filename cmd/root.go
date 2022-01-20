@@ -37,6 +37,7 @@ to quickly create a Cobra application.`,
 		viper.AddConfigPath("/etc/appname/")  // path to look for the config file in
 		viper.AddConfigPath("$HOME/.appname") // call multiple times to add many search paths
 		viper.AddConfigPath(".")              // optionally look for config in the working directory
+		// TODO: Error handling, config validation, dependency injection
 		if err := viper.ReadInConfig(); err != nil {
 			if _, ok := err.(viper.ConfigFileNotFoundError); ok {
 				// Config file not found; ignore error if desired
