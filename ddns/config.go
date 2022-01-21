@@ -8,6 +8,6 @@ type Zone struct {
 
 type Config struct {
 	ApiToken        string `mapstructure:"api_token"`
-	RefreshInterval int    `mapstructure:"refresh_interval"`
+	RefreshInterval string `mapstructure:"refresh_interval"`
 	Zones           []Zone `mapstructure:"zones"`
 }
