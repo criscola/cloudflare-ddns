@@ -1,5 +1,7 @@
 package ddns
 
+import "time"
+
 type Zone struct {
 	ZoneId  string `mapstructure:"zone_id"`
 	Proxied bool   `mapstructure:"proxied"`
@@ -7,7 +9,7 @@ type Zone struct {
 }
 
 type Config struct {
-	ApiToken        string `mapstructure:"api_token"`
-	RefreshInterval string `mapstructure:"refresh_interval"`
-	Zones           []Zone `mapstructure:"zones"`
+	ApiToken        string        `mapstructure:"api_token"`
+	RefreshInterval time.Duration `mapstructure:"refresh_interval"`
+	Zones           []Zone        `mapstructure:"zones"`
 }

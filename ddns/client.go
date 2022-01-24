@@ -28,7 +28,16 @@ func (client Client) Start() {
 
 	// Main loop
 	for {
-		publicIp := getPublicIp()
+		// Divide zones array per number of cores available
+		// Spawn goroutine to handle each zone concurrently
+		// Return done in loop when finished, then wait refresh interval before cycling
+
+		publicIp, err := getPublicIp()
+		if err != nil {
+			logger.Errorf("cannot get public IP: %s", err)
+			time.Sleep(client.Config.RefreshInterval)
+			continue
+		}
 		logger.Debugf("retrieved public IP: %s", publicIp)
 
 		// TODO: Check and update zones concurrently
@@ -61,11 +70,7 @@ func (client Client) Start() {
 			}
 			logger.Infof("IPv4 root record updated successfully, old IP %s was replaced with new IP %s", oldIP, publicIp)
 		}
-		refreshInterval, err := time.ParseDuration(client.Config.RefreshInterval)
-		if err != nil {
-			client.Logger.Fatal("cannot parse refresh interval, please specify an interval like this: 500ms, 10s, 5m etc.")
-		}
-		time.Sleep(refreshInterval)
+		time.Sleep(client.Config.RefreshInterval)
 	}
 }
 
@@ -88,21 +93,23 @@ func (client Client) getIpv6RootRecord(ctx context.Context, zoneId string) (clou
 }
 
 // getPublicIp gets the public IP by querying 1.1.1.1 and parsing its response.
-func getPublicIp() string {
+func getPublicIp() (string, error) {
 	response, err := http.Get(PublicIpPage)
 	if err != nil {
-		logger.Fatalf("cannot get public IP: %s", err)
+		//logger.Fatalf("cannot get public IP: %s", err)
+		return "", err
 	}
 	resp, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		logger.Fatalf("cannot read body: %s", err)
+		//logger.Fatalf("cannot read body: %s", err)
+		return "", err
 	}
 	payload := string(resp)
 	lines := strings.Split(payload, "\n")
 	for _, line := range lines {
 		if strings.Contains(line, "ip") {
-			return strings.Split(line, "=")[1]
+			return strings.Split(line, "=")[1], nil
 		}
 	}
-	return ""
+	return "", nil
 }
