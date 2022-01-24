@@ -1,10 +1,15 @@
 # Cloudflare DDNS
-A Dynamic DNS for Cloudflare that allows your zones to be constantly up-to-date with your constantly changing public IP. 
+## Introduction
+
+A Dynamic DNS application for Cloudflare that allows your zones to be constantly up-to-date with your constantly changing public IP.
+
+Cloudflare is an excellent reverse proxy, providing powerful and complete free features like DNS resolving and CDN caching.
 
 ## Description
-A simple Go application allows your DNS records to have their A and AAAA records updated with your current dynamic public IP.
+Cloudflare DDNS is a lightweight Go application allowing your A and AAAA records to be updated with your current dynamic public IP.
 
-You can specify your configuration by means of a `yaml` configuration file.
+It works by asking 1.1.1.1 for your public IP and then updating your configured root domain with your new public IP, if necessary.
+You can specify your configuration by means of a super simple `yaml` configuration file.
 
 ## TODOs
 - [ ] IPv6 support
