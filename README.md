@@ -18,8 +18,9 @@ You can specify your configuration by means of a super simple `yaml` configurati
 - [ ] Allow DNS records to be created if not present already
 - [ ] Update DNS records concurrently instead of one after the other
 - [x] Logging & error handling
-- [ ] Allow configuring which DNS record to update manually
+- [x] Allow configuring which DNS records to update manually
 - [ ] CLI flags
-- [ ] Docker deployment
-- [ ] Kubernetes Helm Chart deployment
+- [ ] Docker Compose deployment
+- [x] Kubernetes Helm Chart deployment
+- [x] Readiness/liveness probes
 - [ ] API key and account email auth option
