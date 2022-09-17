@@ -55,14 +55,14 @@ tolerations: []
 affinity: {}
 
 config:
-api_token: "your api token with Edit DNS enabled"
-refresh_interval: 60
-zones:
-  - zone_id: "your zone id"
-    proxied: true
-    ipv6: false
-  - zone_id: "your zone id"
-    ipv6: false
-    explicit_records: # pro-tip: use CNAME records if possible
-      - name: ""
-      - name: "ssh"
+  api_token: "your api token with Edit DNS enabled"
+  refresh_interval: 60
+  zones:
+    - zone_id: "your zone id"
+      proxied: true
+      ipv6: false
+    - zone_id: "your zone id"
+      ipv6: false
+      explicit_records: # pro-tip: use CNAME records if possible
+        - name: ""
+        - name: "ssh"
