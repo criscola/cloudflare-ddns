@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  cloudflare-ddns:
+  - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2022-12-05T11:35:14.973433485Z"
+    description: A Dynamic DNS for Cloudflare that allows your zones to be constantly
+      up-to-date with your constantly changing public IP.
+    digest: fde8a98e66459b183874e44eb7e6480a7c5de8f07e6f59bb3db62a86718d5672
+    name: cloudflare-ddns
+    type: application
+    urls:
+    - https://github.com/criscola/cloudflare-ddns/releases/download/cloudflare-ddns-0.2.0/cloudflare-ddns-0.2.0.tgz
+    version: 0.2.0
+generated: "2022-12-05T11:35:14.973438185Z"
